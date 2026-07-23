@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://dq2yerw2n8jkn"]
+
+[ext_resource type="Script" uid="uid://b3wkcv8i5as61" path="res://Player/player.gd" id="1_pjrb6"]
+[ext_resource type="Script" uid="uid://ko8ddbq4bbfv" path="res://main/main.gd" id="1_xwkvk"]
+[ext_resource type="Texture2D" uid="uid://bhot5vscn4t73" path="res://rename.svg" id="2_xwkvk"]
+[ext_resource type="PackedScene" uid="uid://cl0pqqvkquhju" path="res://Event/Spike/spike.tscn" id="4_c651c"]
+[ext_resource type="PackedScene" uid="uid://b17jhavuch0xx" path="res://Event/Spike/spikeSpawn.tscn" id="5_kfbq2"]
+
+[sub_resource type="Gradient" id="Gradient_c651c"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8mt0l"]
+gradient = SubResource("Gradient_c651c")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lexek"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8mt0l"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5rnw"]
+size = Vector2(294, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3wy1v"]
+size = Vector2(308, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yxefq"]
+size = Vector2(1160.5, 98)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfbq2"]
+size = Vector2(136, 834)
+
+[node name="Main" type="Node2D" unique_id=765204660]
+script = ExtResource("1_xwkvk")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=392056262]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=384931255]
+modulate = Color(0.6452097, 0.6452098, 0.6452097, 1)
+position = Vector2(-3.0517578e-05, -0.99998283)
+scale = Vector2(4.523437, 648)
+texture = SubResource("GradientTexture1D_8mt0l")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=316771605]
+position = Vector2(-379, -167)
+script = ExtResource("1_pjrb6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1359102201]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_xwkvk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=807295329]
+shape = SubResource("RectangleShape2D_lexek")
+
+[node name="Button" type="Sprite2D" parent="." unique_id=1528623919]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_xwkvk")
+
+[node name="Button" type="StaticBody2D" parent="Button" unique_id=421359437]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Button/Button" unique_id=1968094012]
+shape = SubResource("RectangleShape2D_8mt0l")
+
+[node name="Area2D" type="Area2D" parent="Button" unique_id=611298860]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Button/Area2D" unique_id=918241413]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_q5rnw")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Button/Area2D" unique_id=1324537611]
+position = Vector2(1.4210855e-14, 0)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_3wy1v")
+
+[node name="Wall" type="StaticBody2D" parent="." unique_id=601346944]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=509004510]
+position = Vector2(0.75, 373)
+shape = SubResource("RectangleShape2D_yxefq")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Wall" unique_id=255524722]
+position = Vector2(647, -4)
+shape = SubResource("RectangleShape2D_kfbq2")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Wall" unique_id=971651992]
+position = Vector2(-647, -6)
+shape = SubResource("RectangleShape2D_kfbq2")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Wall" unique_id=1726689210]
+position = Vector2(1, -372)
+shape = SubResource("RectangleShape2D_yxefq")
+
+[node name="Spike" parent="." unique_id=1470829358 groups=["Spike", "obstacle"] instance=ExtResource("4_c651c")]
+position = Vector2(-546, -290)
+collision_layer = 4097
+collision_mask = 4097
+
+[node name="Spike2" parent="." unique_id=852497257 instance=ExtResource("5_kfbq2")]
+position = Vector2(-480, -276)
+collision_layer = 4096
+collision_mask = 4097
+
+[node name="Spike3" parent="." unique_id=555707112 instance=ExtResource("5_kfbq2")]
+position = Vector2(-458, -276)
+collision_layer = 4096
+collision_mask = 4097
+
+[connection signal="area_entered" from="Spike" to="Spike" method="_on_area_entered"]
+[connection signal="area_entered" from="Spike2" to="Spike2" method="_on_area_entered"]
+[connection signal="area_entered" from="Spike3" to="Spike3" method="_on_area_entered"]

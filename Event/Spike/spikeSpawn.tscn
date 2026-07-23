@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://b17jhavuch0xx"]
+
+[ext_resource type="Script" uid="uid://rjs5wyfuno2m" path="res://Event/Spike/spike_spawn.gd" id="1_0rjsq"]
+[ext_resource type="Texture2D" uid="uid://bhot5vscn4t73" path="res://rename.svg" id="2_45jon"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mdew2"]
+size = Vector2(64, 64)
+
+[node name="SpikeSpawn" type="Area2D" unique_id=1470829358]
+visible = false
+collision_layer = 8192
+collision_mask = 8193
+script = ExtResource("1_0rjsq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=67582154]
+modulate = Color(0.31764707, 1, 0, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_45jon")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1154047659]
+shape = SubResource("RectangleShape2D_mdew2")
+
+[node name="Timer" type="Timer" parent="." unique_id=458490858]
+process_callback = 0
+wait_time = 0.05
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
