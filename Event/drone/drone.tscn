@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://b1en37upqvorv"]
+
+[ext_resource type="Script" uid="uid://ftpc0ltt6cs4" path="res://Event/drone/drone.gd" id="1_3uu5p"]
+[ext_resource type="Texture2D" uid="uid://bhot5vscn4t73" path="res://rename.svg" id="2_5e4nx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lnkwj"]
+size = Vector2(64, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8mt0l"]
+
+[node name="drone" type="CharacterBody2D" unique_id=847378969]
+script = ExtResource("1_3uu5p")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=668263701]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=237999397]
+shape = SubResource("RectangleShape2D_lnkwj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1053241913]
+shape = SubResource("CircleShape2D_8mt0l")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1257720805]
+modulate = Color(0, 1, 1, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_5e4nx")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

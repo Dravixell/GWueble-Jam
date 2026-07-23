@@ -1,20 +1,20 @@
-[gd_scene format=3 uid="uid://b17jhavuch0xx"]
+[gd_scene format=3 uid="uid://cihwxj7rjsu3h"]
 
-[ext_resource type="Script" uid="uid://rjs5wyfuno2m" path="res://Event/Spike/spike_spawn.gd" id="1_0rjsq"]
-[ext_resource type="Texture2D" uid="uid://bhot5vscn4t73" path="res://rename.svg" id="2_45jon"]
+[ext_resource type="Script" uid="uid://d6apwlwtbwg7" path="res://Event/drone/drone_spawn.gd" id="1_3umdg"]
+[ext_resource type="Texture2D" uid="uid://bhot5vscn4t73" path="res://rename.svg" id="2_kcbci"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mdew2"]
 size = Vector2(64, 64)
 
-[node name="SpikeSpawn" type="Area2D" unique_id=1470829358]
+[node name="DroneSpawn" type="Area2D" unique_id=1470829358]
 collision_layer = 8192
 collision_mask = 8193
-script = ExtResource("1_0rjsq")
+script = ExtResource("1_3umdg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=67582154]
 modulate = Color(0.31764707, 1, 0, 1)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_45jon")
+texture = ExtResource("2_kcbci")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1154047659]
 shape = SubResource("RectangleShape2D_mdew2")
